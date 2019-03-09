@@ -1,8 +1,14 @@
 package pl.alx.dept.model;
 
-import javax.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import javax.persistence.*;
+@Setter
+@Getter
 @Entity
+@NoArgsConstructor
 @Table(name = "user")
 public class User {
 @Id
@@ -23,4 +29,8 @@ private String firstName;
 @Column(length = 45, nullable = false)
 private String lastName;
 
+    public User(int id) {
+        this.id=id;
+
+    }
 }

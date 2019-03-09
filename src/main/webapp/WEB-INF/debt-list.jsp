@@ -37,8 +37,8 @@
                 <c:forEach var="dept" items="${debts}" varStatus="loop">
                     <tr>
                         <td>${dept.id}</td>
-                        <td>${dept.lender}</td>
-                        <td>${dept.debtor}</td>
+                        <td>${dept.lenderName}</td>
+                        <td>${dept.debtorName}</td>
                         <td>${dept.amount}</td>
                     </tr>
                 </c:forEach>
@@ -51,7 +51,5 @@
         </div>
     </div>
 </div>
-
-
 </body>
 </html>

@@ -40,7 +40,7 @@
 
                 <li>
 
-                    <a href="<c:url value=""/>">New debts <span class="glyphicon glyphicon-plus"></span></a>
+                    <a href="<c:url value="/debts/create"/>">New debts <span class="glyphicon glyphicon-plus"></span></a>
 
                 </li>
 
