@@ -36,11 +36,11 @@
 
             <ul class="nav navbar-nav">
 
-                <li><a href="<c:url value="/users"/>">Lista</a></li>
+                <li><a href="<c:url value="/debts"/>">All debts</a></li>
 
                 <li>
 
-                    <a href="<c:url value="/users/form"/>">Nowy <span class="glyphicon glyphicon-plus"></span></a>
+                    <a href="<c:url value=""/>">New debts <span class="glyphicon glyphicon-plus"></span></a>
 
                 </li>
 

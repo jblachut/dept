@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
 public class Debt {
@@ -12,8 +13,9 @@ public class Debt {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
+    private LocalDateTime createdAt;
     private BigDecimal amount;
+
 @ManyToOne
 @JoinColumn(name = "lender_id")
     private User lender;
@@ -21,5 +23,9 @@ public class Debt {
     @ManyToOne
     @JoinColumn(name = "debtor_id")
     private Debtor debtor;
+
+    private boolean paidOff;
+
+
 
 }

@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>pl.alx</groupId>
-    <artifactId>dept</artifactId>
+    <artifactId>debt</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
     <name>dept</name>
