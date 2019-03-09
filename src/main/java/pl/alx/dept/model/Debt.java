@@ -1,11 +1,13 @@
 package pl.alx.dept.model;
 
+import lombok.Getter;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+@Getter
 @Entity
 public class Debt {
 
