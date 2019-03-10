@@ -107,6 +107,7 @@
                     <div class="col-sm-offset-2 col-sm-10">
 
                         <button type="submit" class="btn btn-primary">Login</button>
+                        <a class="btn btn-primary" href="/register" role="button">Register</a>
 
                     </div>
 

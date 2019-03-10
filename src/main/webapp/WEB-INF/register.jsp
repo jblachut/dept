@@ -63,8 +63,9 @@
                                class="form-control"
 
                                value=""
-
+                               required
                                placeholder="Enter first name">
+
 
                     </div>
 
@@ -79,7 +80,7 @@
                     <div class="col-sm-9">
 
                         <input id="lastName"
-
+                               required
                                type="text"
 
                                name="lastName"
@@ -103,7 +104,7 @@
                     <div class="col-sm-9">
 
                         <input id="email"
-
+                               required
                                type="email"
 
                                name="email"
@@ -122,12 +123,12 @@
 
                 <div class="form-group">
 
-                    <label for="lastName" class="col-sm-3 control-label">Password: </label>
+                    <label for="password" class="col-sm-3 control-label">Password: </label>
 
                     <div class="col-sm-9">
 
                         <input id="password"
-
+                               required
                                type="password"
 
                                name="password"
