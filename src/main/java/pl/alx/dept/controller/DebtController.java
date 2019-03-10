@@ -17,6 +17,7 @@ import pl.alx.dept.model.User;
 
 import java.math.BigDecimal;
 import java.net.URLEncoder;
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,12 +29,22 @@ import java.util.Optional;
 
     @Autowired
     private DebtorDao debtorDao;
+    @Autowired
+    private  UserDao userDao;
+
+    @Autowired
+    private  PasswordEncoder passwordEncoder;
+
 
 
         @GetMapping("/debts")
-        public String debtsPage(Model model)
+        public String debtsPage(Model model, Principal principal)
         {
-            List<Debt> debts = debtDao.findAll();
+            // login uzytkownika do logowani
+            String email = principal.getName();
+            User loggesInUser = userDao.findByEmail(email);
+
+            List<Debt> debts = debtDao.findByLender(loggesInUser);
             model.addAttribute("debts", debts);
             return "debt-list";
         }
@@ -42,15 +53,19 @@ import java.util.Optional;
     public String debtForm(Model model)
 
         {
+
+
+
             List<Debtor> debtors = debtorDao.findAll();
             model.addAttribute("debtors", debtors);
             return "debt-form";
         }
 
     @PostMapping("/debts/create")
-            public  String saveDebt(@RequestParam Integer debtorId, @RequestParam BigDecimal amount)
+            public  String saveDebt(@RequestParam Integer debtorId, @RequestParam BigDecimal amount, Principal principal)
         {
-            User lender = new User(1); //TODO: DSDSD
+            String email = principal.getName();
+            User lender = userDao.findByEmail(email);
             Optional<Debtor> debtor =debtorDao.findById(debtorId);
             Debt debt = new Debt(lender, debtor.get(), amount);
             debtDao.save(debt);
@@ -74,11 +89,7 @@ import java.util.Optional;
     {
         return "register";
     }
-    @Autowired
-    private UserDao userDao;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
 
     @PostMapping("/register")
     public String register(@ModelAttribute UserForm userForm)

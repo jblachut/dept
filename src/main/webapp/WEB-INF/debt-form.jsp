@@ -1,4 +1,3 @@
-
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 
 <!DOCTYPE html>
@@ -53,6 +52,8 @@
 
                   class="form-horizontal">
 
+                <input type="hidden" name="id" value="${debt.id}">
+
                 <div class="form-group">
 
                     <label for="debtorId" class="col-sm-2 control-label">Debtor: </label>
@@ -77,7 +78,7 @@
 
                     <div class="col-sm-1">
 
-                        <button type="button" class="btn btn-default">
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#deptor-create">
 
                             <span class="glyphicon glyphicon-plus"></span>
 
@@ -89,26 +90,23 @@
 
 
 
-
-
-
                 <div class="form-group">
 
-                    <label for="amount" class="col-sm-2 control-label">amount: </label>
+                    <label for="amount" class="col-sm-2 control-label">Amount: </label>
 
                     <div class="col-sm-10">
 
                         <input id="amount"
 
-                               type="amount"
+                               type="text"
 
                                name="amount"
 
                                class="form-control"
 
-                               value="${debtors.amount}"
+                               value=""
 
-                               placeholder="Enter Amount">
+                               placeholder="Enter amount">
 
                     </div>
 
@@ -120,7 +118,7 @@
 
                     <div class="col-sm-offset-2 col-sm-10">
 
-                        <button type="submit" class="btn btn-primary">Zapisz</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
 
                     </div>
 
@@ -136,8 +134,109 @@
 
 </div>
 
+<div id="deptor-create" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Add debtor</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="container">
+
+<%--formularz--%>
+
+                    <div class="row">
+
+                        <div class="col-sm-offset-1 col-sm-6 col-xs-12">
+
+                            <form method="post"
+
+                                  action="<c:url value="/debtor/create"/>"
+
+                                  class="form-horizontal">
 
 
+                                <div class="form-group">
+
+                                    <label for="firstName"
+                                           class="col-sm-1 control-label">Name: </label>
+
+                                    <div class="col-sm-8">
+
+                                        <input id="firstName"
+
+                                               type="text"
+
+                                               name="firstName"
+
+                                               class="form-control"
+
+                                               value=""
+
+                                               placeholder="Enter Name Debtor">
+
+                                    </div>
+
+                                </div>
+
+                                    <label for="lastName" class="col-sm-1 control-label">Last Name: </label>
+
+                                    <div class="col-sm-8">
+
+                                        <input id="lastName"
+
+                                               type="text"
+
+                                               name="lastName"
+
+                                               class="form-control"
+
+                                               value=""
+
+                                               placeholder="Enter Last Name debtor">
+
+                                    </div>
+
+
+
+                                    <label for="email" class="col-sm-1 control-label">Email: </label>
+
+                                    <div class="col-sm-8">
+
+                                        <input id="email"
+
+                                               type="text"
+
+                                               name="email"
+
+                                               class="form-control"
+
+                                               value=""
+
+                                               placeholder="Enter email">
+
+                                    </div>
+
+
+    <div class="col-sm-8">
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+    </div> </form>
+                        </div>
+                    </div>
+
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</div>
+        </form>
+
+    </div>
+
+</div>
 </body>
 
 </html>

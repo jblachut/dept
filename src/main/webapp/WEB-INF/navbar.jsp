@@ -44,6 +44,8 @@
 
                 </li>
 
+                <li><a href="<c:url value="/user-list"/>">All users</a></li>
+
             </ul>
 
             <ul class="nav navbar-nav navbar-right" >
