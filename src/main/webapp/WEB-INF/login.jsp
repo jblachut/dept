@@ -47,7 +47,7 @@
 
             <form method="post"
 
-                  action="<c:url value="/login-process"/>"
+                  action="<c:url value="/login"/>"
 
                   class="form-horizontal">
 

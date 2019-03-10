@@ -1,18 +1,22 @@
 package pl.alx.dept.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.alx.dept.Dao.DebtorDao;
 import pl.alx.dept.Dao.DebtDao;
+import pl.alx.dept.Dao.UserDao;
 import pl.alx.dept.model.Debt;
 import pl.alx.dept.model.Debtor;
 import pl.alx.dept.model.User;
 
 import java.math.BigDecimal;
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.Optional;
 
@@ -66,9 +70,31 @@ import java.util.Optional;
     }
 
     @GetMapping("/register")
-    public String debtsRegister()
+    public String registerPage()
     {
         return "register";
+    }
+    @Autowired
+    private UserDao userDao;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @PostMapping("/register")
+    public String register(@ModelAttribute UserForm userForm)
+    { // stworzenie nowego obiektu
+
+        User user = new User(
+                userForm.getEmail(),
+                passwordEncoder.encode(userForm.getPassword()),
+                userForm.getFirstName(),
+                userForm.getLastName()
+        );
+        // zapisanie do bazy
+        userDao.save(user);
+
+
+        return "redirect:/login";
     }
 }
 
