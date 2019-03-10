@@ -1,10 +1,9 @@
-
-<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
-
-<!DOCTYPE html>
-
-<html lang="en">
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>login</title>
+</head>
 <head>
 
     <meta charset="UTF-8">
@@ -37,7 +36,6 @@
 
 <body>
 
-<%@ include file="/WEB-INF/navbar.jsp" %>
 
 <div class="container">
 
@@ -49,39 +47,27 @@
 
             <form method="post"
 
-                  action="<c:url value="/debts/create"/>"
+                  action="<c:url value="/login-process"/>"
 
                   class="form-horizontal">
 
                 <div class="form-group">
 
-                    <label for="debtorId" class="col-sm-2 control-label">Debtor: </label>
+                    <label for="email" class="col-sm-2 control-label">emial: </label>
 
-                    <div class="col-sm-9">
+                    <div class="col-sm-10">
 
-                        <select id="debtorId" name="debtorId"
+                        <input id="email"
 
-                                class="form-control">
+                               type="email"
 
-                            <option value="">-- select debtor --</option>
+                               name="email"
 
-                            <c:forEach var="debtor" items="${debtors}">
+                               class="form-control"
 
-                                <option value="${debtor.id}">${debtor.firstName} ${debtor.lastName}</option>
+                               value="${userDao.email}"
 
-                            </c:forEach>
-
-                        </select>
-
-                    </div>
-
-                    <div class="col-sm-1">
-
-                        <button type="button" class="btn btn-default">
-
-                            <span class="glyphicon glyphicon-plus"></span>
-
-                        </button>
+                               placeholder="Enter email">
 
                     </div>
 
@@ -94,21 +80,21 @@
 
                 <div class="form-group">
 
-                    <label for="amount" class="col-sm-2 control-label">amount: </label>
+                    <label for="password" class="col-sm-2 control-label">password: </label>
 
                     <div class="col-sm-10">
 
-                        <input id="amount"
+                        <input id="password"
 
-                               type="amount"
+                               type="password"
 
-                               name="amount"
+                               name="password"
 
                                class="form-control"
 
-                               value="${debtors.amount}"
+                               value="${user.password}"
 
-                               placeholder="Enter Amount">
+                               placeholder="Enter password">
 
                     </div>
 
@@ -120,7 +106,7 @@
 
                     <div class="col-sm-offset-2 col-sm-10">
 
-                        <button type="submit" class="btn btn-primary">Zapisz</button>
+                        <button type="submit" class="btn btn-primary">Login</button>
 
                     </div>
 
@@ -139,5 +125,4 @@
 
 
 </body>
-
 </html>

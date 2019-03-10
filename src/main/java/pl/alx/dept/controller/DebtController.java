@@ -37,11 +37,11 @@ import java.util.Optional;
     @GetMapping("/debts/create")
     public String debtForm(Model model)
 
-    {
-        List<Debtor> debtors = debtorDao.findAll();
-        model.addAttribute("debtors", debtors);
-        return "debt-form";
-    }
+        {
+            List<Debtor> debtors = debtorDao.findAll();
+            model.addAttribute("debtors", debtors);
+            return "debt-form";
+        }
 
     @PostMapping("/debts/create")
             public  String saveDebt(@RequestParam Integer debtorId, @RequestParam BigDecimal amount)
@@ -51,9 +51,24 @@ import java.util.Optional;
             Debt debt = new Debt(lender, debtor.get(), amount);
             debtDao.save(debt);
             return "redirect:/debts";
+        }
+
+    @GetMapping("/login")
+    public String debtsLog()
+    {
+        return "login";
     }
 
+    @PostMapping("/login")
+    public  String saveLogin(@RequestParam Integer email, @RequestParam BigDecimal password)
+    {
+        return "redirect:/";
+    }
 
-
+    @GetMapping("/register")
+    public String debtsRegister()
+    {
+        return "register";
+    }
 }
 
