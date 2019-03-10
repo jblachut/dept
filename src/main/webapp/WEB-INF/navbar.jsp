@@ -1,4 +1,5 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 
@@ -43,9 +44,9 @@
                     <a href="<c:url value="/debts/create"/>">New debts <span class="glyphicon glyphicon-plus"></span></a>
 
                 </li>
-
+<sec:authorize access="hasRole('ADMIN')">
                 <li><a href="<c:url value="/user-list"/>">All users</a></li>
-
+</sec:authorize>
             </ul>
 
             <ul class="nav navbar-nav navbar-right" >
