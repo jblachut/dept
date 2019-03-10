@@ -47,7 +47,7 @@
 
             <form method="post"
 
-                  action="<c:url value="/login"/>"
+                  action="<c:url value="/login-process"/>"
 
                   class="form-horizontal">
 
@@ -65,7 +65,7 @@
 
                                class="form-control"
 
-                               value="${userDao.email}"
+                               value="${user.email}"
 
                                placeholder="Enter email">
 
